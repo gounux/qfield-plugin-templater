@@ -30,3 +30,4 @@ jobs:
         uses: cssnr/zensical-action@v1
         with:
           args: -f documentation/zensical.toml
+          path: documentation/site
