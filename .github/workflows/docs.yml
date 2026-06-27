@@ -1,0 +1,32 @@
+name: 📃 Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    name: 🚀 Deploy to GitHub Pages
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Zensical Action
+        id: zensical
+        uses: cssnr/zensical-action@v1
+        with:
+          args: -f documentation/zensical.toml

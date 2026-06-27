@@ -1,0 +1,9 @@
+[project]
+name = "qfield-plugin-templater"
+version = "0.1.0"
+description = "A cookiecutter-based templater for generating a QField plugin skeleton with CI & integrated tooling."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "zensical>=0.0.46",
+]
