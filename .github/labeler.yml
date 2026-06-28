@@ -1,0 +1,37 @@
+ci:
+  - head-branch:
+    - "^ci"
+    - "ci"
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/**
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file:
+      - pyproject.toml
+      - uv.lock
+
+documentation:
+  - head-branch:
+    - "^doc"
+    - "doc"
+  - changed-files:
+    - any-glob-to-any-file:
+      - documentation/**
+      - README.md
+
+feature:
+  - head-branch:
+    - "^feature"
+    - "feature"
+    - "^feat"
+    - "feat"
+
+tooling:
+  - head-branch:
+    - "^tooling"
+    - "tooling"
+  - changed-files:
+    - any-glob-to-any-file:
+      - .pre-commit-config.yaml
