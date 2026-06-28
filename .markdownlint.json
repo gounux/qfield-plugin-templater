@@ -38,9 +38,7 @@
     "MD041": {
         "front_matter_title": "^\\s*title\\s*[:=]"
     },
-    "MD046": {
-        "style": "fenced"
-    },
+    "MD046": false,
     "MD051": false,
     "MD059": false
 }
