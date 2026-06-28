@@ -18,5 +18,5 @@ Now that a QField plugin has been generated using the templater, we are ready to
 
 ```sh
 ln -s /path/to/the/generated/directory/my-topologizer \
-    "~/Documents/QField Documents/QField/plugins
+    "~/Documents/QField Documents/QField/plugins"
 ```

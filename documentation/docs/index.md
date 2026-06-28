@@ -7,7 +7,7 @@ icon: lucide/smartphone-charging
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://qfield.org/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](https://github.com/gounux/qfield-plugin-templater/blob/main/LICENSE)
 
-**A templater for generating a QField plugin from scratch.**
+**A templater for generating a new QField plugin from scratch.**
 
 ![QField plugin templater logo](./images/qf-plugin-templater-logo.png){ width="200" }
 
@@ -33,7 +33,7 @@ After a few prompts, there you go : you have a new QField plugin!
 
 Based on the `cookiecutter` templating engine:
 
-[![Cookicutter logo](https://raw.githubusercontent.com/cookiecutter/cookiecutter/main/logo/cookiecutter_medium.png){ width="360" }](https://github.com/cookiecutter/cookiecutter)
+[![Cookiecutter logo](https://raw.githubusercontent.com/cookiecutter/cookiecutter/main/logo/cookiecutter_medium.png){ width="360" }](https://github.com/cookiecutter/cookiecutter)
 
 Built for the QField plugins framework:
 
