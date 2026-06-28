@@ -1,0 +1,7 @@
+[general]
+name={{ cookiecutter.plugin_name }}
+description={{ cookiecutter.plugin_description }}
+author={{ cookiecutter.plugin_author }}
+icon=assets/img/{{ cookiecutter.plugin_name_slug }}.svg
+version=0.1
+homepage={{ cookiecutter.repository_url_base }}
