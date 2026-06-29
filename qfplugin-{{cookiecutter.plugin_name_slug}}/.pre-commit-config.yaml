@@ -1,0 +1,54 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-illegal-windows-names
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: pretty-format-json
+      - id: trailing-whitespace
+
+  - repo: https://github.com/tomas-krupa/qmlformat-hook.git
+    rev: 1.2.0
+    hooks:
+      - id: qmlformat
+        additional_dependencies:
+          - PySide6-Essentials==6.11.1
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.15.20"
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+          - --target-version=py312
+      - id: ruff-format
+        args:
+          - --line-length=88
+          - --target-version=py312
+
+  - repo: https://github.com/pycqa/isort
+    rev: 8.0.1
+    hooks:
+      - id: isort
+        args:
+          - --filter-files
+
+# Specific part for https://pre-commit.ci
+ci:
+  autofix_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autofix_prs: true
+  autoupdate_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autoupdate_schedule: monthly
+  skip: [
+    "qmlformat"
+  ]
+  submodules: false
