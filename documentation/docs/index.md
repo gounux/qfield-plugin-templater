@@ -18,7 +18,7 @@ Run the following command:
 === "with `pip`"
 
     ```sh
-    pipx cookiecutter gh:gounux/qfield-plugin-templater
+    pipx run cookiecutter gh:gounux/qfield-plugin-templater
     ```
 
 === "with `uv`"

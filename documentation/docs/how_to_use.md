@@ -6,13 +6,13 @@ icon: lucide/list-collapse
 
 The quickest way to generate a QField plugin template is with `pipx` / `uvx`:
 
-=== "`pipx`"
+=== "`pip`"
 
     ```sh
-    pipx cookiecutter gh:gounux/qfield-plugin-templater
+    pipx run cookiecutter gh:gounux/qfield-plugin-templater
     ```
 
-=== "`uvx`"
+=== "`uv`"
 
     ```sh
     uvx cookiecutter gh:gounux/qfield-plugin-templater
@@ -23,7 +23,7 @@ You can also install `cookiecutter` via:
 === "`pip`"
 
     ```sh
-    python3 -m pip install cookiecutter --break-system-packages
+    pipx install cookiecutter
     ```
 
 === "`uv`"
