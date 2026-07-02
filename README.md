@@ -14,13 +14,27 @@ Run the following command:
 - with `pip`:
 
 ```sh
-pipx cookiecutter gh:gounux/qfield-plugin-templater
+pipx run cookiecutter gh:gounux/qfield-plugin-templater
+```
+
+Or install `cookiecutter` and run:
+
+```sh
+pipx install cookiecutter
+cookiecutter gh:gounux/qfield-plugin-templater
 ```
 
 - with `uv`:
 
 ```sh
 uvx cookiecutter gh:gounux/qfield-plugin-templater
+```
+
+Or install `cookiecutter` and run:
+
+```sh
+uv tool install cookiecutter
+cookiecutter gh:gounux/qfield-plugin-templater
 ```
 
 After a few prompts, there you go : you have a new QField plugin!
