@@ -17,6 +17,7 @@ Following parameters have been used to generate this plugin:
 | Plugin name slug | {{ cookiecutter.plugin_name_slug }} |
 | Plugin description | {{ cookiecutter.plugin_description }} |
 | Plugin author | {{ cookiecutter.plugin_author }} |
+| Plugin locales | {{ cookiecutter.plugin_locales }} |
 | Repository URL base | {{ cookiecutter.repository_url_base }} |
 | Open source license | {{ cookiecutter.open_source_license }} |
 | CI platform | {{ cookiecutter.ci_platform }} |
