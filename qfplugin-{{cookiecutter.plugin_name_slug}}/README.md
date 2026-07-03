@@ -24,6 +24,27 @@ Following parameters have been used to generate this plugin:
 
 ## Development
 
+- Download a version of a QField build, pick a recent version [from the recent releases](https://github.com/opengisch/qfield/releases).
+
+If you are on Linux, you may need to set the `+x` permission on the downloaded QField build:
+
+```sh
+chmod +x qfield-X.Y.Z-linux-x64.AppImage
+```
+
+- Open this QField build, go to [the Plugins Manager](https://docs.qfield.org/how-to/advanced-how-tos/plugins/#application-plugins) and install the `QField plugin reloader`.
+
+- Create a symbolic link from the generated plugin directory into the QField plugins directory:
+
+```sh
+ln -s qfplugin-{{ cookiecutter.plugin_name_slug }}/{{ cookiecutter.plugin_name_slug }} \
+    "~/Documents/QField Documents/QField/plugins"
+```
+
+!!! note
+    - The QField plugins directory is located in the `QField Documents` directory, which is created in your home when you first run QField. If you have changed the location of this directory, please adapt the command above accordingly.
+    - The symbolic link must point to the plugin directory, not the parent directory. In this example, the plugin directory is `{{ cookiecutter.plugin_name_slug }}`, which is inside the generated directory `qfplugin-{{ cookiecutter.plugin_name_slug }}`.
+
 ### Test locally
 
 > [!NOTE]
