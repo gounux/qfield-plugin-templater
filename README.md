@@ -82,5 +82,5 @@ uv run zensical serve -f documentation/zensical.toml
 - resize and convert images to `webp`, for minimal storage usage:
 
 ```sh
-./scripts/resize-image.sh documentation/docs/images/the_image.png sh
+./scripts/resize-image.sh documentation/docs/images/the_image.png 800
 ```
