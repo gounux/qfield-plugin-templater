@@ -86,12 +86,6 @@ Example: _This QField plugin will make you map the moon!_
 
 Example: _Jane Doe_
 
-- `plugin_icon`:
-
-> Path to the plugin icon, leave blank to use the default icon.
-
-Example: _/home/gounux/Pictures/awesome-logo.svg_
-
 - `plugin_locales`:
 
 > Comma-separated list of locales to support translations for the plugin. Can also be configured later.

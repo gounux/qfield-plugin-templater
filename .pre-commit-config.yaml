@@ -29,3 +29,31 @@ repos:
           ]
         pass_filenames: true
         types: [file, markdown, non-executable]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.15.20"
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+          - --target-version=py312
+      - id: ruff-format
+        args:
+          - --line-length=88
+          - --target-version=py312
+
+  - repo: https://github.com/pycqa/isort
+    rev: 8.0.1
+    hooks:
+      - id: isort
+        args:
+          - --filter-files
+
+# Specific configuration for https://pre-commit.ci
+ci:
+  autofix_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autofix_prs: true
+  autoupdate_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
