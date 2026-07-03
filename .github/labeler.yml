@@ -19,7 +19,6 @@ documentation:
   - changed-files:
     - any-glob-to-any-file:
       - documentation/**
-      - README.md
 
 feature:
   - head-branch:
