@@ -13,8 +13,8 @@ WEBP_QUALITY=100
 for file in $FILES; do
 
     # extract file basename and extension
-    filename="${file%%.*}"
-    ext="${file#*.}"
+    filename="${file%.*}"
+    ext="${file##*.}"
 
     # resize image to fit max size
     echo "Resizing '${file}' (max size: ${MAX_SIZE})..."
@@ -25,6 +25,7 @@ for file in $FILES; do
     webp="${filename}.webp"
     cwebp -q $WEBP_QUALITY ${file} -o $webp
 
+    # delete the initial image file
     rm ${file}
 
 done
