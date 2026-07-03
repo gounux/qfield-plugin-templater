@@ -92,6 +92,12 @@ Example: _Jane Doe_
 
 Example: _/home/gounux/Pictures/awesome-logo.svg_
 
+- `plugin_locales`:
+
+> Comma-separated list of locales to support translations for the plugin. Can also be configured later.
+
+Example: _de,es,fr,it_
+
 - `repository_url_base`:
 
 > Base URL of the repository for this plugin.

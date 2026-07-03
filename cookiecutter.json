@@ -1,9 +1,10 @@
 {
     "plugin_name": "My new QField plugin",
-    "plugin_name_slug": "{{ cookiecutter.plugin_name | slugify | replace('-', '_') }}",
+    "plugin_name_slug": "{{ cookiecutter.plugin_name | slugify }}",
     "plugin_description": "This QField plugin will make you map the moon!",
     "plugin_author": "Jane Doe",
     "plugin_icon": "path_to_an_image_or_leave_blank_to_use_default_icon",
+    "plugin_locales": "de,es,fr,it",
     "repository_url_base": "https://github.com/{{ cookiecutter.plugin_author | slugify }}/{{ cookiecutter.plugin_name_slug }}/",
     "open_source_license": [
         "GPLv2+",
@@ -23,6 +24,7 @@
         "plugin_description": "Plugin description, preferably short.",
         "plugin_author": "Plugin author.",
         "plugin_icon": "Path to the plugin icon, leave blank to use the default icon.",
+        "plugin_locales": "Comma-separated list of locales to support translations for the plugin. Can also be configured later.",
         "repository_url_base": "Base URL of the repository for this plugin.",
         "open_source_license": "License to use for the plugin.",
         "ci_platform": "CI platform to configure for this plugin."
