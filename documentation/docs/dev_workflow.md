@@ -4,7 +4,7 @@ icon: lucide/chevrons-left-right-ellipsis
 
 # Development workflow
 
-Now that a QField plugin has been generated using the templater, we are ready to develop it further !
+Now that a QField plugin has been generated, let's dev it further !
 
 !!! note
     The following commands are to be run in the generated plugin directory, e.g. `qfplugin-my-topologizer/` if the plugin name is `My Topologizer` (slugified to `my-topologizer`).
@@ -33,6 +33,51 @@ ln -s /path/to/the/generated/directory/qfplugin-my-topologizer/my-topologizer \
 !!! note
     - The QField plugins directory is located in the `QField Documents` directory, which is created in your home when you first run QField. If you have changed the location of this directory, please adapt the command above accordingly.
     - The symbolic link must point to the plugin directory, not the parent directory. In this example, the plugin directory is `my-topologizer`, which is inside the generated directory `qfplugin-my-topologizer`.
+
+## Test locally
+
+!!! note
+    QGIS4 must be installed on the machine for testing! See [installation instructions](https://qgis.org/resources/installation-guide/#linux).
+
+- [x] Install `uv` locally:
+
+```sh
+python3 -m pip install uv --break-system-packages
+```
+
+- [x] Create local virtualenv with system packages and sync:
+
+```sh
+uv venv --system-site-packages
+uv sync
+```
+
+- [x] Add system packages to local virtual env (hacky):
+
+```sh
+SITE_PACKAGES=$(uv run python -c "import site; print(site.getsitepackages()[0])")
+echo "/usr/share/qgis/python" > "$SITE_PACKAGES/qgis.pth"
+```
+
+- [x] Test that imports are fine:
+
+```sh
+uv run python -c "import qgis; print(qgis.__file__)"
+uv run python -c "import PyQt6; print(PyQt6.__file__)"
+uv run python -c "from PyQt6.QtCore import QT_VERSION_STR; print(QT_VERSION_STR)"
+```
+
+- [x] Clone QField locally, e.g.:
+
+```sh
+git clone --depth 1 [--branch release-4_2] https://github.com/opengisch/QField.git
+```
+
+- [x] Run tests:
+
+```sh
+uv run pytest tests -v --qgis_disable_gui
+```
 
 ## Translate the plugin
 
