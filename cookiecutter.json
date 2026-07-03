@@ -1,6 +1,6 @@
 {
     "plugin_name": "My new QField plugin",
-    "plugin_name_slug": "{{ cookiecutter.plugin_name | slugify | replace('-', '_') }}",
+    "plugin_name_slug": "{{ cookiecutter.plugin_name | slugify }}",
     "plugin_description": "This QField plugin will make you map the moon!",
     "plugin_author": "Jane Doe",
     "plugin_icon": "path_to_an_image_or_leave_blank_to_use_default_icon",
