@@ -53,6 +53,10 @@ Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/templa
 
 <img src="https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png" alt="QGIS plugin templater logo" width="80">
 
+Featuring a few icons coming from [the Lucide icon set](https://lucide.dev/).
+
+Featuring a few sounds coming from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
+
 ## Local setup
 
 ### Tooling

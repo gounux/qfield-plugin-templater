@@ -43,6 +43,10 @@ Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/templa
 
 [![QGIS plugin templater logo](https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png){ width="80" }](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)
 
+Featuring a few icons coming from [the Lucide icon set](https://lucide.dev/).
+
+Featuring a few sounds coming from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
+
 ## How to's
 
 - [x] See [how to use the templater and fine-tune the plugin generation](./how_to_use.md).
