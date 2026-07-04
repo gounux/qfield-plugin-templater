@@ -1,10 +1,10 @@
-pragma Translator: MyPlugin
+// NOTE: uncomment the following line to enable translation for this plugin.
+// pragma Translator: {{ cookiecutter.plugin_name_slug }}
 
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtMultimedia
-import QtWebSockets
 import QtCore
 
 import org.qfield
