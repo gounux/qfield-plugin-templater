@@ -1,0 +1,209 @@
+pragma Translator: MyPlugin
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtMultimedia
+import QtWebSockets
+import QtCore
+
+import org.qfield
+import org.qgis
+import Theme
+
+import "qrc:/qml" as QFieldItems
+
+Item {
+    id: plugin
+    objectName: "plugin"
+
+    property var mainWindow: iface.mainWindow()
+    property var mapCanvas: iface.mapCanvas()
+
+    Component.onCompleted: {
+        iface.addItemToPluginsToolbar(pluginButtons);
+    }
+
+    readonly property var famousPlaces: [
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Eiffel Tower"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Paris, France"),
+            longitude: 2.2945,
+            latitude: 48.8584
+        },
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Colosseum"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Rome, Italy"),
+            longitude: 12.4922,
+            latitude: 41.8902
+        },
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Sagrada Familia"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Barcelona, Spain"),
+            longitude: 2.1744,
+            latitude: 41.4036
+        },
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Taj Mahal"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Agra, India"),
+            longitude: 78.0421,
+            latitude: 27.1751
+        },
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Brandenburg Gate"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Berlin, Germany"),
+            longitude: 13.3777,
+            latitude: 52.5163
+        },
+        {
+            name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Statue of Liberty"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "New York, USA"),
+            longitude: -74.0445,
+            latitude: 40.6892
+        }
+    ]
+
+    Dialog {
+        id: famousPlacesDialog
+        objectName: "famousPlacesDialog"
+        title: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "{{ cookiecutter.plugin_name }} - lon/lat picker")
+        focus: true
+        font: Theme.defaultFont
+        parent: mainWindow.contentItem
+
+        x: (mainWindow.width - width) / 2
+        y: (mainWindow.height - height - 80) / 2
+
+        enter: Transition {
+            NumberAnimation {
+                property: "opacity"
+                from: 0.0
+                to: 1.0
+                duration: 720
+                easing.type: Easing.OutCubic
+            }
+        }
+        exit: Transition {
+            NumberAnimation {
+                property: "opacity"
+                from: 1.0
+                to: 0.0
+                duration: 360
+                easing.type: Easing.InCubic
+            }
+        }
+
+        Column {
+            width: famousPlacesDialog.availableWidth
+            height: childrenRect.height
+            spacing: 10
+
+            Label {
+                font: Theme.defaultFont
+                color: Theme.mainTextColor
+                text: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Pick a famous place:")
+            }
+
+            ComboBox {
+                id: famousPlacesComboBox
+                width: parent.width
+                font: Theme.defaultFont
+                model: famousPlaces.map(place => `${place.name} - ${place.location}`)
+
+                onActivated: index => {
+                    longitudeInputField.text = famousPlaces[index].longitude.toString();
+                    latitudeInputField.text = famousPlaces[index].latitude.toString();
+                }
+
+                Component.onCompleted: {
+                    longitudeInputField.text = famousPlaces[currentIndex].longitude.toString();
+                    latitudeInputField.text = famousPlaces[currentIndex].latitude.toString();
+                }
+            }
+
+            Label {
+                font: Theme.defaultFont
+                color: Theme.mainTextColor
+                text: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Or enter directly the coordinates:")
+            }
+
+            TextField {
+                id: longitudeInputField
+                width: parent.width
+                font: Theme.defaultFont
+                placeholderText: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Longitude")
+
+                inputMethodHints: Qt.ImhFormattedNumbersOnly
+                validator: DoubleValidator {
+                    bottom: -180
+                    top: 180
+                    notation: DoubleValidator.StandardNotation
+                }
+            }
+
+            TextField {
+                id: latitudeInputField
+                width: parent.width
+                font: Theme.defaultFont
+                placeholderText: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Latitude")
+
+                inputMethodHints: Qt.ImhFormattedNumbersOnly
+                validator: DoubleValidator {
+                    bottom: -90
+                    top: 90
+                    notation: DoubleValidator.StandardNotation
+                }
+            }
+
+            QfButton {
+                id: jumpToCoordinatesButton
+                width: parent.width
+                font: Theme.defaultFont
+                text: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Jump to coordinates")
+
+                onClicked: {
+                    const longitude = parseFloat(longitudeInputField.text);
+                    const latitude = parseFloat(latitudeInputField.text);
+
+                    const jumpToPoint = GeometryUtils.point(longitude, latitude);
+                    const destCrs = CoordinateReferenceSystemUtils.wgs84Crs();
+                    const projectedPoint = GeometryUtils.reprojectPoint(jumpToPoint, destCrs, qgisProject.crs);
+
+                    mapCanvas.jumpTo(projectedPoint, scale = 10000);
+                    mainWindow.displayToast(qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Moved to coordinates: %1, %2").arg(longitude).arg(latitude));
+
+                    famousPlacesDialog.close();
+                }
+            }
+        }
+
+        standardButtons: Dialog.Cancel
+
+        Component.onCompleted: {
+            standardButton(Dialog.Cancel).text = qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Close");
+        }
+    }
+
+    QfToolButtonDrawer {
+        id: pluginButtons
+        objectName: "pluginButtons"
+        iconSource: Qt.resolvedUrl("resources/images/icon.png")
+        bgcolor: Theme.darkGray
+        round: true
+
+        QfToolButton {
+            objectName: "famousPlacesButton"
+            iconSource: Qt.resolvedUrl("resources/images/map-pin-search.svg")
+            iconColor: "white"
+            bgcolor: Theme.darkGray
+            width: 40
+            height: 40
+            padding: 0
+            round: true
+
+            onClicked: {
+                famousPlacesDialog.open();
+            }
+        }
+    }
+}
