@@ -17,7 +17,7 @@ site_name = "QField plugin templater"
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "A cookiecutter-based templater for generating a QField plugin skeleton with CI & integrated tooling."
+site_description = "A templater that generates a QField plugin with fancy tooling."
 
 # The site_author attribute. This is used in the HTML head element.
 #
