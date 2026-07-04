@@ -14,3 +14,18 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
+
+  - package-ecosystem: "github-actions"
+    directory: "/qfplugin-{{cookiecutter.plugin_name_slug}}"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
+      - "dependencies"
+
+  - package-ecosystem: "uv"
+    directory: "/qfplugin-{{cookiecutter.plugin_name_slug}}"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
