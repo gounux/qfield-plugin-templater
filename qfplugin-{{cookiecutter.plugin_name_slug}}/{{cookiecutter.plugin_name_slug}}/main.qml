@@ -24,6 +24,8 @@ Item {
         iface.addItemToPluginsToolbar(pluginButtons);
     }
 
+    // list of famous places with their name and coordinates,
+    // to be used in the dialog as data sample for jumping to coordinates.
     readonly property var famousPlaces: [
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Eiffel Tower"),
@@ -110,11 +112,13 @@ Item {
                 font: Theme.defaultFont
                 model: famousPlaces.map(place => `${place.name} - ${place.location}`)
 
+                // when a famous place is selected, update the longitude and latitude input fields with the corresponding coordinates.
                 onActivated: index => {
                     longitudeInputField.text = famousPlaces[index].longitude.toString();
                     latitudeInputField.text = famousPlaces[index].latitude.toString();
                 }
 
+                // when the dialog is opened, set the input fields to the coordinates of the first famous place in the list.
                 Component.onCompleted: {
                     longitudeInputField.text = famousPlaces[currentIndex].longitude.toString();
                     latitudeInputField.text = famousPlaces[currentIndex].latitude.toString();
@@ -165,13 +169,15 @@ Item {
                     const longitude = parseFloat(longitudeInputField.text);
                     const latitude = parseFloat(latitudeInputField.text);
 
+                    // reproject the coordinates from WGS84 to the project's CRS.
                     const jumpToPoint = GeometryUtils.point(longitude, latitude);
                     const destCrs = CoordinateReferenceSystemUtils.wgs84Crs();
                     const projectedPoint = GeometryUtils.reprojectPoint(jumpToPoint, destCrs, qgisProject.crs);
 
+                    //then jump to the point on the map canvas.
                     mapCanvas.jumpTo(projectedPoint, scale = 10000);
-                    mainWindow.displayToast(qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Moved to coordinates: %1, %2").arg(longitude).arg(latitude));
 
+                    mainWindow.displayToast(qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Moved to coordinates: %1, %2").arg(longitude).arg(latitude));
                     famousPlacesDialog.close();
                 }
             }
@@ -193,7 +199,7 @@ Item {
 
         QfToolButton {
             objectName: "famousPlacesButton"
-            iconSource: Qt.resolvedUrl("resources/images/map-pin-search.svg")
+            iconSource: Qt.resolvedUrl("resources/images/lucide/map-pin-search.svg")
             iconColor: "white"
             bgcolor: Theme.darkGray
             width: 40
