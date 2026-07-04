@@ -3,7 +3,7 @@
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://qfield.org/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](LICENSE)
 
-**A templater for generating a new QField plugin from scratch.**
+**A templater that generates a QField plugin with fancy tooling.**
 
 <img src="./documentation/docs/images/qf-plugin-templater-logo.png" alt="QField plugin templater logo" width="200">
 
@@ -37,7 +37,7 @@ uv tool install cookiecutter
 cookiecutter gh:gounux/qfield-plugin-templater
 ```
 
-After a few prompts, there you go : you have a new QField plugin!
+After a few prompts, there you go: you have a new QField plugin with a ready-to-go dev workflow and fancy tooling!
 
 ## References
 
