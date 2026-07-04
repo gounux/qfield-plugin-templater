@@ -5,7 +5,7 @@
 
 **A templater that generates a QField plugin with fancy tooling.**
 
-<img src="./documentation/docs/images/qf-plugin-templater-logo.png" alt="QField plugin templater logo" width="200">
+<img src="./documentation/docs/images/qf-plugin-templater-logo.png" alt="QField plugin templater logo" width="192">
 
 ## Quick start
 
@@ -43,15 +43,15 @@ After a few prompts, there you go: you have a new QField plugin with a ready-to-
 
 Based on the [`cookiecutter`](https://github.com/cookiecutter/cookiecutter) templating engine:
 
-<img src="https://raw.githubusercontent.com/cookiecutter/cookiecutter/main/logo/cookiecutter_medium.png" alt="Cookiecutter logo" width="360">
+<img src="https://raw.githubusercontent.com/cookiecutter/cookiecutter/main/logo/cookiecutter_medium.png" alt="Cookiecutter logo" width="320">
 
 Built for the [QField plugins framework](https://api.qfield.org/):
 
-<img src="https://qfield.org/images/qfield_for_qgis.png" alt="QField for QGIS logo" width="300">
+<img src="https://qfield.org/images/qfield_for_qgis.png" alt="QField for QGIS logo" width="260">
 
 Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/template-qgis-plugin/):
 
-<img src="https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png" alt="QGIS plugin templater logo" width="96">
+<img src="https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png" alt="QGIS plugin templater logo" width="80">
 
 ## Local setup
 
