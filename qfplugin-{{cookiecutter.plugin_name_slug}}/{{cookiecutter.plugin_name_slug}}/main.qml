@@ -174,7 +174,7 @@ Item {
                     const destCrs = CoordinateReferenceSystemUtils.wgs84Crs();
                     const projectedPoint = GeometryUtils.reprojectPoint(jumpToPoint, destCrs, qgisProject.crs);
 
-                    //then jump to the point on the map canvas.
+                    // then jump to the point on the map canvas with a fixed scale.
                     mapCanvas.jumpTo(projectedPoint, scale = 10000);
 
                     mainWindow.displayToast(qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Moved to coordinates: %1, %2").arg(longitude).arg(latitude));

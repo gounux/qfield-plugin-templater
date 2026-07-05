@@ -43,9 +43,7 @@ Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/templa
 
 [![QGIS plugin templater logo](https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png){ width="80" }](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)
 
-Featuring a few icons coming from [the Lucide icon set](https://lucide.dev/).
-
-Featuring a few sounds coming from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
+Featuring icons from [the Lucide icon set](https://lucide.dev/), and sounds from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
 
 ## How to's
 
