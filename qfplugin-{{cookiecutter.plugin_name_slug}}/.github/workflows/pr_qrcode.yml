@@ -31,9 +31,9 @@ jobs:
         id: config
         run: |
           DIRECTORY="{{ cookiecutter.plugin_name_slug }}"
-          ZIP_NAME="{{ cookiecutter.plugin_name_slug }}-pr-${{ github.event.pull_request.number }}-${{ github.sha }}.zip"
-          TAG_NAME="pr-${{ github.event.pull_request.number }}-${{ github.sha }}"
-          TAG_PREFIX="pr-${{ github.event.pull_request.number }}-"
+          ZIP_NAME="{{ cookiecutter.plugin_name_slug }}-pr-{% raw %}${{ github.event.pull_request.number }}-${{ github.sha }}{% endraw %}.zip"
+          TAG_NAME="pr-{% raw %}${{ github.event.pull_request.number }}-${{ github.sha }}{% endraw %}"
+          TAG_PREFIX="pr-{% raw %}${{ github.event.pull_request.number }}-{% endraw %}"
           echo "directory=$DIRECTORY" >> $GITHUB_OUTPUT
           echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
           echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
@@ -43,7 +43,7 @@ jobs:
       - name: Delete previous pre-releases for this PR
         uses: actions/github-script@v9
         env:
-          TAG_PREFIX: ${{ steps.config.outputs.tag_prefix }}
+          TAG_PREFIX: "{% raw %}${{ steps.config.outputs.tag_prefix }}{% endraw %}"
         with:
           script: |
             const script = require('./scripts/github/delete-pr-prereleases.js')
@@ -60,63 +60,63 @@ jobs:
 
       - name: Zip the QField plugin
         run: |
-          cd ${{ steps.config.outputs.directory }}
-          zip -r "../${{ steps.config.outputs.zip_name }}" ./*
+          cd "{% raw %}${{ steps.config.outputs.directory }}{% endraw %}"
+          zip -r "../{% raw %}${{ steps.config.outputs.zip_name }}{% endraw %}" ./*
 
       - name: Generate QR code
         run: |
           pip install qrcode[pil] --quiet
           python3 ./scripts/generate_qr_code.py
         env:
-          FILE_URL: https://github.com/${{ github.repository }}/releases/download/${{ steps.config.outputs.tag_name }}/${{ steps.config.outputs.zip_name }}
+          FILE_URL: https://github.com/{% raw %}${{ github.repository }}{% endraw %}/releases/download/{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}/{% raw %}${{ steps.config.outputs.zip_name }}{% endraw %}
 
       - name: Create pre-release with the ZIP and the QR code
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ steps.config.outputs.tag_name }}
-          name: "PR #${{ github.event.pull_request.number }} - {{ cookiecutter.plugin_name_slug }}"
+          tag_name: "{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}"
+          name: "PR #{% raw %}${{ github.event.pull_request.number }}{% endraw %} - {{ cookiecutter.plugin_name_slug }}"
           prerelease: true
           body: |
-            This pre-release contains the ZIP artefact and the QR code for PR #${{ github.event.pull_request.number }}.
-            It was generated from commit `${{ steps.config.outputs.sha_short }}`.
+            This pre-release contains the ZIP artefact and the QR code for PR #{% raw %}${{ github.event.pull_request.number }}{% endraw %}.
+            It was generated from commit `{% raw %}${{ steps.config.outputs.sha_short }}{% endraw %}`.
             It will be automatically deleted when the PR is closed.
 
             Flash the following QR code in QField to test the plugin:
 
-            <img src="https://github.com/${{ github.repository }}/releases/download/${{ steps.config.outputs.tag_name }}/qrcode.png" alt="QR Code" width="360"/>
+            <img src="https://github.com/{% raw %}${{ github.repository }}{% endraw %}/releases/download/{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}/qrcode.png" alt="QR Code" width="360"/>
           files: |
-            ${{ steps.config.outputs.zip_name }}
+            {% raw %}${{ steps.config.outputs.zip_name }}{% endraw %}
             qrcode.png
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: "{% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}"
 
       - name: Find existing bot comment
         uses: peter-evans/find-comment@v4
         id: find-comment
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: "{% raw %}${{ github.event.pull_request.number }}{% endraw %}"
           comment-author: github-actions[bot]
           body-includes: 📦 Artefacts generated
 
       - name: Create or update comment on the Pull Request
         uses: peter-evans/create-or-update-comment@v5
         with:
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: "{% raw %}${{ steps.find-comment.outputs.comment-id }}{% endraw %}"
+          issue-number: "{% raw %}${{ github.event.pull_request.number }}{% endraw %}"
           edit-mode: replace
           body: |
             ## 📦 Artefacts generated
 
             | Element | Value |
             |------|-------|
-            | 📥 ZIP file | [`${{ steps.config.outputs.zip_name }}`](https://github.com/${{ github.repository }}/releases/download/${{ steps.config.outputs.tag_name }}/${{ steps.config.outputs.zip_name }}) |
-            | 🏷️ Tag | `${{ steps.config.outputs.tag_name }}` |
-            | 🔑 Commit | `${{ steps.config.outputs.sha_short }}` |
-            | 🆕 Pre-release | [`PR #${{ github.event.pull_request.number }} - {{ cookiecutter.plugin_name_slug }}`](https://github.com/${{ github.repository }}/releases/tag/${{ steps.config.outputs.tag_name }}) |
+            | 📥 ZIP file | [`{% raw %}${{ steps.config.outputs.zip_name }}{% endraw %}`](https://github.com/{% raw %}${{ github.repository }}{% endraw %}/releases/download/{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}/{% raw %}${{ steps.config.outputs.zip_name }}{% endraw %}) |
+            | 🏷️ Tag | `{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}` |
+            | 🔑 Commit | `{% raw %}${{ steps.config.outputs.sha_short }}{% endraw %}` |
+            | 🆕 Pre-release | [`PR #{% raw %}${{ github.event.pull_request.number }}{% endraw %} - {{ cookiecutter.plugin_name_slug }}`](https://github.com/{% raw %}${{ github.repository }}{% endraw %}/releases/tag/{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}) |
 
             ---
 
             ### 📱 QR Code: Flash in QField to test
-            <img src="https://github.com/${{ github.repository }}/releases/download/${{ steps.config.outputs.tag_name }}/qrcode.png" alt="QR Code" width="360"/>
+            <img src="https://github.com/{% raw %}${{ github.repository }}{% endraw %}/releases/download/{% raw %}${{ steps.config.outputs.tag_name }}{% endraw %}/qrcode.png" alt="QR Code" width="360"/>
 
   cleanup:
     name: 🧹 Cleanup on PR close
@@ -133,7 +133,7 @@ jobs:
       - name: Delete all pre-releases for this PR
         uses: actions/github-script@v9
         env:
-          TAG_PREFIX: pr-${{ github.event.pull_request.number }}-
+          TAG_PREFIX: "pr-{% raw %}${{ github.event.pull_request.number }}{% endraw %}-"
         with:
           script: |
             const script = require('./scripts/github/delete-pr-prereleases.js')
@@ -143,7 +143,7 @@ jobs:
         uses: peter-evans/find-comment@v4
         id: find-comment
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: "{% raw %}${{ github.event.pull_request.number }}{% endraw %}"
           comment-author: github-actions[bot]
           body-includes: 📦 Artefacts generated
 
@@ -151,7 +151,7 @@ jobs:
         if: steps.find-comment.outputs.comment-id != ''
         uses: actions/github-script@v9
         env:
-          COMMENT_ID: ${{ steps.find-comment.outputs.comment-id }}
+          COMMENT_ID: "{% raw %}${{ steps.find-comment.outputs.comment-id }}{% endraw %}"
         with:
           script: |
             const script = require('./scripts/github/delete-bot-comment.js')
