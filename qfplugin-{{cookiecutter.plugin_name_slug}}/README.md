@@ -1,7 +1,7 @@
-# {{ cookiecutter.plugin_name }} QField plugin
+# {{ cookiecutter.plugin_name }}
 
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://api.qfield.org/)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 {{ cookiecutter.plugin_description }}
 
