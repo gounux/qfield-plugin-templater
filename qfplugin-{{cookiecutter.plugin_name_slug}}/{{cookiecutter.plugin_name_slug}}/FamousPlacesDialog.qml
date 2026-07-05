@@ -43,37 +43,37 @@ Dialog {
     readonly property var famousPlaces: [
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Eiffel Tower"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Paris, France"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Paris"),
             longitude: 2.2945,
             latitude: 48.8584
         },
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Colosseum"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Rome, Italy"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Rome"),
             longitude: 12.4922,
             latitude: 41.8902
         },
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Sagrada Familia"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Barcelona, Spain"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Barcelona"),
             longitude: 2.1744,
             latitude: 41.4036
         },
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Taj Mahal"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Agra, India"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Agra"),
             longitude: 78.0421,
             latitude: 27.1751
         },
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Brandenburg Gate"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Berlin, Germany"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Berlin"),
             longitude: 13.3777,
             latitude: 52.5163
         },
         {
             name: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "Statue of Liberty"),
-            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "New York, USA"),
+            location: qsTranslate("{{ cookiecutter.plugin_name_slug }}", "New York"),
             longitude: -74.0445,
             latitude: 40.6892
         }
