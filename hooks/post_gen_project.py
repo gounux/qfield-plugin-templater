@@ -12,6 +12,7 @@ def clean_license_file():
 def clean_github_elements():
     """Remove GitHub specific elements from the project."""
     shutil.rmtree(".github")
+    shutil.rmtree("scripts/github")
     logging.info("GitHub configuration removed.")
 
 
