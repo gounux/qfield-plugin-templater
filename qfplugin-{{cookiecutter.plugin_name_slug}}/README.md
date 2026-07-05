@@ -47,7 +47,7 @@ ln -s qfplugin-{{ cookiecutter.plugin_name_slug }}/{{ cookiecutter.plugin_name_s
 
 ### Test locally
 
-> [!NOTE]
+> [!note]
 > QGIS4 must be installed on the machine for testing! See [installation instructions](https://qgis.org/resources/installation-guide/#linux).
 
 - Install `uv` locally:
@@ -112,8 +112,8 @@ TRANSLATIONS += \
 lupdate {{ cookiecutter.plugin_name_slug }}/translations.pro
 ```
 
-[!NOTE]
-If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lupdate` on Linux.
+> [!note]
+> If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lupdate` on Linux.
 
 - Open the generated `.ts` files with [`Qt Linguist`](https://doc.qt.io/qt-6/qtlinguist-index.html), using the GUI or the command line:
 
@@ -121,8 +121,8 @@ If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.
 linguist {{ cookiecutter.plugin_name_slug }}/main_fr.ts
 ```
 
-[!NOTE]
-If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/linguist` on Linux.
+> [!note]
+> If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/linguist` on Linux.
 
 - Compile the translations to `.qm` files:
 
@@ -130,5 +130,5 @@ If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.
 lrelease {{ cookiecutter.plugin_name_slug }}/translations.pro
 ```
 
-[!NOTE]
-If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lrelease` on Linux.
+> [!note]
+> If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lrelease` on Linux.
