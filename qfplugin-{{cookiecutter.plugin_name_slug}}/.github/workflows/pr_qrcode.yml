@@ -56,7 +56,7 @@ jobs:
           echo "/usr/lib/qt6/bin" >> "$GITHUB_PATH"
 
       - name: Compile translations
-        run: lrelease {{ cookiecutter.plugin_name_slug }}/translations.pro
+        run: lrelease {{ cookiecutter.plugin_name_slug }}/*.ts
 
       - name: Zip the QField plugin
         run: |
