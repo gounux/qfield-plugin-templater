@@ -1,0 +1,27 @@
+ci:
+  - head-branch:
+    - "^ci"
+    - "ci"
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/**
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file:
+      - pyproject.toml
+
+enhancement:
+  - head-branch:
+    - "^feature"
+    - "feature"
+    - "^feat"
+    - "feat"
+
+tooling:
+  - head-branch:
+    - "^tooling"
+    - "tooling"
+  - changed-files:
+    - any-glob-to-any-file:
+      - .pre-commit-config.yaml
