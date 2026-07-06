@@ -4,15 +4,15 @@
     "plugin_description": "This QField plugin will make you map the moon!",
     "plugin_author": "Jane Doe",
     "plugin_locales": "de,es,fr,it",
-    "repository_url_base": "https://github.com/{{ cookiecutter.plugin_author | slugify }}/{{ cookiecutter.plugin_name_slug }}",
+    "ci_platform": [
+        "GitHub",
+        "None"
+    ],
+    "repository_url_base": "https://{{ cookiecutter.ci_platform | lower }}.com/{{ cookiecutter.plugin_author | slugify }}/{{ cookiecutter.plugin_name_slug }}",
     "open_source_license": [
         "GPLv2+",
         "GPLv3",
         "MIT",
-        "None"
-    ],
-    "ci_platform": [
-        "GitHub",
         "None"
     ],
     "__timestamp_utc": "{% now 'utc', '%Y-%m-%d %H:%M:%S' %}",
@@ -22,8 +22,8 @@
         "plugin_description": "Plugin description, preferably short.",
         "plugin_author": "Plugin author.",
         "plugin_locales": "Comma-separated list of locales to support translations for the plugin. Can also be configured later.",
+        "ci_platform": "CI platform to configure for this plugin.",
         "repository_url_base": "Base URL of the repository for this plugin.",
-        "open_source_license": "License to use for the plugin.",
-        "ci_platform": "CI platform to configure for this plugin."
+        "open_source_license": "License to use for the plugin."
     }
 }
