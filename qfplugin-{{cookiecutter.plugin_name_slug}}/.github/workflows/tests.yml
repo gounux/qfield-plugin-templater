@@ -48,7 +48,7 @@ jobs:
           ref: "{% raw %}${{ matrix.qfield-refs }}{% endraw %}"
 
       - name: Install PyQt6 system dependencies
-        run: apt install -y qt6-websockets-dev qml6-module-qtcore python3-pyqt6.qtqml python3-pyqt6.qtquick
+        run: apt install -y qt6-websockets-dev qml6-module-qtcore qml6-module-qtmultimedia python3-pyqt6.qtqml python3-pyqt6.qtquick python3-pyqt6.qtmultimedia
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
