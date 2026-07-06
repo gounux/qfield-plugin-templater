@@ -1,8 +1,12 @@
 # {{ cookiecutter.plugin_name }}
 
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://api.qfield.org/)
+{% if cookiecutter.open_source_license == "GPLv2+" %}[![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](LICENSE){% elif cookiecutter.open_source_license == "GPLv3+" %}[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](LICENSE){% elif cookiecutter.open_source_license == "MIT" %}[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE){% endif %}
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-
+{% if cookiecutter.ci_platform == "GitHub" %}
+[![🎳 Tests]({{ cookiecutter.repository_url_base }}/actions/workflows/tests.yml/badge.svg?branch=main)]({{ cookiecutter.repository_url_base }}/actions/workflows/tests.yml)
+[![🧹 Lint]({{ cookiecutter.repository_url_base }}/actions/workflows/lint.yml/badge.svg?branch=main)]({{ cookiecutter.repository_url_base }}/actions/workflows/lint.yml)
+{% endif %}
 {{ cookiecutter.plugin_description }}
 
 ## Initial setup

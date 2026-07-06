@@ -3,6 +3,8 @@
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://qfield.org/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](LICENSE)
 
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
 **A templater that generates a QField plugin with fancy tooling.**
 
 <img src="./documentation/docs/images/qf-plugin-templater-logo.png" alt="QField plugin templater logo" width="192">

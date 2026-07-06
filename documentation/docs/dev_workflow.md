@@ -126,7 +126,7 @@ Or process each `.ts` file individually:
 ```sh
 lrelease my-topologizer/main_fr.ts
 lrelease my-topologizer/main_de.ts
-````
+```
 
 !!!note
     If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lrelease` on Linux.

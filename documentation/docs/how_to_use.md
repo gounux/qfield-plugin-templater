@@ -92,6 +92,12 @@ Example: _Jane Doe_
 
 Example: _de,es,fr,it_
 
+- `ci_platform`:
+
+> CI platform to configure for this plugin.
+
+Available values: `GitHub`, `GitLab` or _None_
+
 - `repository_url_base`:
 
 > Base URL of the repository for this plugin.
@@ -103,9 +109,3 @@ Example: _<https://github.com/gounux/my-topologizer/>_
 > License to use for the plugin.
 
 Available values: `GPLv2+`, `GPLv3`, `MIT` or _None_
-
-- `ci_platform`:
-
-> CI platform to configure for this plugin.
-
-Available values: `GitHub`, `GitLab` or _None_
