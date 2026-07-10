@@ -5,7 +5,7 @@ description = "{{ cookiecutter.plugin_description }}"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "zensical>=0.0.46",
+    "zensical>=0.0.50",
 ]
 
 [dependency-groups]
