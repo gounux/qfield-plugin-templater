@@ -41,7 +41,7 @@ cookiecutter gh:gounux/qfield-plugin-templater
 !!! note
     Consider creating a new empty repository [on GitLab](https://gitlab.com/projects/new#blank_project) or [on GitHub](https://github.com/new), **before** generating a new QField plugin with the templater. This will directly and properly bind the repository with the generated QField plugin.
 
-## CLI parameters
+## CLI usage
 
 You can give arguments to the `cookiecutter` CLI, to bypass the prompts:
 
@@ -50,7 +50,7 @@ cookiecutter gh:gounux/qfield-plugin-templater "plugin_name=My Topologizer"
 ```
 
 !!! info
-    You can browse all the possible arguments accepted by the QField plugin templated in the accurate section: [**configurations**](#configurations).
+    You can browse all the possible arguments accepted by the QField plugin templated in the accurate section: [**template parameters**](#template-parameters).
 
 If running in a CI, you can give the `--no-input` option:
 
@@ -58,7 +58,7 @@ If running in a CI, you can give the `--no-input` option:
 cookiecutter gh:gounux/qfield-plugin-templater --no-input "plugin_name=My Topologizer"
 ```
 
-## Configurations
+## Template parameters
 
 When generating a QField plugin template, the following values are asked:
 
