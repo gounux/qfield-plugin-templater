@@ -1,0 +1,55 @@
+stages:
+  - 🧹 lint
+  # - 📥 comment
+  - 🎳 tests
+
+variables:
+  PLUGIN_DIR: "{{ cookiecutter.plugin_name_slug }}"
+  PYTHON_IMAGE_TAG: "3.12"
+  PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+
+lint:pre-commit:
+  stage: 🧹 lint
+  image: python:${PYTHON_IMAGE_TAG}
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  cache:
+    paths:
+      - ${PRE_COMMIT_HOME}
+  before_script:
+    - apt update && apt install -y git pipx
+  script:
+    - pipx run pre-commit run --all-files --show-diff-on-failure --color always
+
+tests:qftests:
+  stage: 🎳 tests
+  image: qgis/qgis:${QGIS_IMAGE_TAG}
+  parallel:
+    matrix:
+      - QGIS_IMAGE_TAG:
+          - 4.0-questing
+        QFIELD_REF:
+          - release-4_2
+          - master
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - ${PLUGIN_DIR}/*.qml
+        - tests/**/*
+        - .gitlab-ci.yml
+  variables:
+    QGIS_IN_CI: "1"
+  before_script:
+    - apt update
+    - apt install -y qt6-websockets-dev qml6-module-qtcore qml6-module-qtmultimedia python3-pyqt6.qtqml python3-pyqt6.qtquick python3-pyqt6.qtmultimedia
+    - pip install uv --break-system-packages
+  script:
+    - git clone --depth 1 --branch "${QFIELD_REF}" https://github.com/opengisch/QField.git QField
+    - uv venv --system-site-packages
+    - SITE_PACKAGES=$(uv run python -c "import site; print(site.getsitepackages()[0])")
+    - echo "/usr/share/qgis/python" > "${SITE_PACKAGES}/qgis.pth"
+    - uv sync
+    - xvfb-run uv run pytest tests -v --qgis_disable_gui
