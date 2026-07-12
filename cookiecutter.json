@@ -6,6 +6,7 @@
     "plugin_locales": "de,es,fr,it",
     "ci_platform": [
         "GitHub",
+        "GitLab",
         "None"
     ],
     "repository_url_base": "https://{{ cookiecutter.ci_platform | lower }}.com/{{ cookiecutter.plugin_author | slugify }}/{{ cookiecutter.plugin_name_slug }}",
