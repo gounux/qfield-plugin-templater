@@ -69,3 +69,5 @@ You get a generated template directory which contains a translation framework, a
 Available languages can be configured during the template generation or later. The translation files are in the `.ts` format, which is a XML-based format used by Qt.
 
 See [the translation dev workflow](dev_workflow.md#translate-the-plugin) for more information on how to manage translations.
+
+See [the QField plugins API docs](https://api.qfield.org/translate/) for more information on how to translate the plugin.

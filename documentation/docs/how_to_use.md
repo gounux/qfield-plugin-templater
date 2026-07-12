@@ -50,7 +50,7 @@ cookiecutter gh:gounux/qfield-plugin-templater "plugin_name=My Topologizer"
 ```
 
 !!! info
-    You can browse all the possible arguments accepted by the QField plugin templated in the accurate section: [**template parameters**](#template-parameters).
+    You can browse all the possible arguments accepted by the QField plugin templated in the accurate section: [template parameters](#template-parameters).
 
 If running in a CI, you can give the `--no-input` option:
 
