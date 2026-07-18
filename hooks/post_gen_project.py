@@ -16,12 +16,21 @@ def clean_github_elements():
     logging.info("GitHub configuration removed.")
 
 
+def clean_gitlab_elements():
+    """Remove GitLab specific elements from the project."""
+    os.remove(".gitlab-ci.yml")
+    shutil.rmtree("scripts/gitlab")
+    logging.info("GitLab configuration removed.")
+
+
 def main():
     """Post generation hook."""
     if "{{ cookiecutter.open_source_license }}".lower() == "none":
         clean_license_file()
     if "{{ cookiecutter.ci_platform }}".lower() != "github":
         clean_github_elements()
+    if "{{ cookiecutter.ci_platform }}".lower() != "gitlab":
+        clean_gitlab_elements()
 
 
 if __name__ == "__main__":

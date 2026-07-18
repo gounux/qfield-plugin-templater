@@ -72,7 +72,32 @@ On a Pull Request, there is also a QR code generation job, which will generate a
 
 ### GitLab CI
 
-The configuration is located in the `.gitlab-ci.yml` file.
+The configuration is located in the `.gitlab-ci.yml` file, and is also making use of a bash script located in the `scripts/gitlab` directory, designed to interact with GitLab APIs.
+
+!!! important
+    You need to create a GitLab access token in the project settings, in order to allow the QR code generation job to work on Merge Requests.
+
+First, create a GitLab access token with the `api` scope in the GitLab project settings:
+
+![GitLab access token creation in the GitLab project settings](images/gitlab-project-token-creation.webp)
+
+!!! tip
+    Regarding the token's `role`, select at least `Reporter`.
+
+Then, add this token as a CI/CD variable named `GITLAB_TOKEN`, in the GitLab project settings under `CI/CD` > `Variables` > `CI/CD variables` > `Add variable`:
+
+![GitLab CI/CD variable creation in the GitLab project settings](images/gitlab-add-token-to-cicd-variables.webp)
+
+!!! warning
+    Don't check the `Protect variable` flag, otherwise the QR code generation job may not be able to comment on Merge Requests.
+
+Once the CI/CD variable is created, the QR code generation job will be able to generate a temporary QR code for the plugin and comment on the Merge Request:
+
+![GitLab CI comment on a Merge Request, showing the QR code generation job](images/gitlab-ci-mr-qrcode-generation.webp)
+
+Here is an overview of the setup pipelines on a Merge Request, showing the different jobs and their status on a Merge Request:
+
+![GitLab CI overview on a Merge Request pipeline, showing the different jobs and their status](images/gitlab-ci-mr-pipeline-overview.webp)
 
 ## Translations
 
