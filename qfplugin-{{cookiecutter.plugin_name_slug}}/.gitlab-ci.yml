@@ -64,8 +64,11 @@ tests:qftests:
   parallel:
     matrix:
       - QGIS_IMAGE_TAG:
+          # list the accurate QGIS image tags to test against
+          # see: https://hub.docker.com/r/qgis/qgis/tags
           - stable-trixie
         QFIELD_REF:
+          # list the QField branches to test against
           - release-4_2
           - master
   rules:
