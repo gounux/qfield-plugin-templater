@@ -5,5 +5,5 @@ description = "A templater that generates a QField plugin with fancy tooling."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "zensical>=0.0.50",
+    "zensical>=0.0.51",
 ]
