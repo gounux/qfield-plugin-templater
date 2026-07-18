@@ -1,6 +1,5 @@
 stages:
-  - 🧹 lint
-  # - 📥 comment
+  - 🛠️ pre
   - 🎳 tests
 
 variables:
@@ -8,8 +7,8 @@ variables:
   PYTHON_IMAGE_TAG: "3.12"
   PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
 
-lint:pre-commit:
-  stage: 🧹 lint
+pre:pre-commit:
+  stage: 🛠️ pre
   image: python:${PYTHON_IMAGE_TAG}
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -24,13 +23,48 @@ lint:pre-commit:
   script:
     - pipx run pre-commit run --all-files --show-diff-on-failure --color always
 
+# Requires a CI/CD variable: GITLAB_TOKEN (project/personal access token with `api` scope)
+pre:mr-zip-and-qr:
+  stage: 🛠️ pre
+  image: python:${PYTHON_IMAGE_TAG}
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - ${PLUGIN_DIR}/**/*
+        - .gitlab-ci.yml
+        - scripts/**/*
+  before_script:
+    - apt update && apt install -y zip curl jq
+    - pip install qrcode[pil] --quiet
+  script:
+    - ZIP_NAME="{{ cookiecutter.plugin_name_slug }}-mr-${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}.zip"
+    - ARTIFACT_BASE_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}/artifacts/raw"
+    - ZIP_URL="${ARTIFACT_BASE_URL}/${ZIP_NAME}"
+    - QR_URL="${ARTIFACT_BASE_URL}/qrcode.png"
+
+    # Zip the QField plugin
+    - cd "${PLUGIN_DIR}" && zip -r "../${ZIP_NAME}" ./* && cd ..
+
+    # Generate QR code pointing to the ZIP artifact
+    - FILE_URL="${ZIP_URL}" python3 ./scripts/generate_qr_code.py
+
+    # Build the comment body and post it to the MR
+    - bash ./scripts/gitlab/post_mr_comment.sh "${ZIP_NAME}" "${ZIP_URL}" "${QR_URL}"
+
+  artifacts:
+    name: "{{ cookiecutter.plugin_name_slug }}-mr-${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
+    paths:
+      - "{{ cookiecutter.plugin_name_slug }}-mr-*.zip"
+      - qrcode.png
+    expire_in: 4 weeks
+
 tests:qftests:
   stage: 🎳 tests
   image: qgis/qgis:${QGIS_IMAGE_TAG}
   parallel:
     matrix:
       - QGIS_IMAGE_TAG:
-          - 4.0-questing
+          - stable-trixie
         QFIELD_REF:
           - release-4_2
           - master
