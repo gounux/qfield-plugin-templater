@@ -19,6 +19,7 @@ def clean_github_elements():
 def clean_gitlab_elements():
     """Remove GitLab specific elements from the project."""
     os.remove(".gitlab-ci.yml")
+    shutil.rmtree("scripts/gitlab")
     logging.info("GitLab configuration removed.")
 
 
