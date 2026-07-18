@@ -56,7 +56,19 @@ Here are the CICD jobs that are configured to run different elements around the 
 
 ### GitHub Actions
 
-The configuration is located in the `.github` directory, and is also making use of the `scripts/github` javascripts designed to interact with GitHub APIs.
+The configuration is located in the `.github` directory, and is also making use of the `scripts/github` JS scripts designed to interact with GitHub APIs.
+
+Here is an overview of the setup workflows on a Pull Request, showing the different jobs and their status:
+
+![GitHub Actions overview on a Pull Request, showing the different jobs and their status](images/github-actions-pr-overview.webp)
+
+On a Pull Request, there is also a QR code generation job, which will generate a temporary QR code for the plugin and comment on the PR:
+
+![GitHub Actions comment on a Pull Request, showing the QR code generation job](images/github-actions-pr-qrcode-generation.webp)
+
+!!! note
+    Due to GitHub artifacts and API design, this QR code step is generating GitHub pre-releases in order to have a public URL for the QR code. The pre-release is automatically deleted when the Pull Request is closed or merged, and the QR code will no longer be available.  
+    Regularly run `git fetch --prune --prune-tags` to clean up the local repository from the tags of such generated pre-releases.
 
 ### GitLab CI
 

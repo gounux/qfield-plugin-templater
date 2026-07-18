@@ -102,7 +102,7 @@ Available values: `GitHub`, `GitLab` or _None_
 
 > Base URL of the repository for this plugin.
 
-Example: _<https://github.com/gounux/my-topologizer/>_
+Example: `https://github.com/gounux/my-topologizer/` or `https://gitlab.com/gounux/my-topologizer/`.
 
 - `open_source_license`:
 
