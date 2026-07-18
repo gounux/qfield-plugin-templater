@@ -18,6 +18,49 @@ After the plugin template is generated, here is what you get in the new director
 
 ## Template structure
 
+Here is the structure of the generated plugin template directory:
+
+```text
+├── my-new-qfield-plugin/                   # the main plugin directory
+│   ├── resources/                          # the plugin's resources directory
+│   │   ├── images/                         # the images resources
+│   │   │   └── icon.png
+│   │   └── sounds/                         # the sounds resources
+│   ├── FamousPlacesDialog.qml              # a QML component for a sample dialog
+│   ├── main_de.ts                          # the German translation file
+│   ├── main_en.ts                          # the English translation file
+│   ├── main_fr.ts                          # the French translation file... and so on for the other languages
+│   ├── main.qml                            # the main entry point of the plugin
+│   ├── metadata.txt                        # the plugin's metadata file
+│   ├── MultimediaDialog.qml                # another QML component for a sample dialog
+│   └── translations.pro                    # the Qt translation project file
+├── .github/                                # GitHub Actions configuration directory - only if GitHub was the selected CI platform
+│   ├── workflows/                          # workflows directory
+│   │   ├── autolabeler.yml
+│   │   ├── lint.yml
+│   │   ├── pr_qrcode.yml
+│   │   └── tests.yml
+│   ├── dependabot.yml                      # dependabot configuration file
+│   └── labeler.yml                         # labeler configuration file
+├── scripts/                                # utils scripts for the CICD jobs
+│   ├── github/                             # if GitHub was the selected CI platform
+│   │   ├── delete-bot-comment.js
+│   │   └── delete-pr-prereleases.js
+│   ├── gitlab/                             # if GitLab was the selected CI platform
+│   │   └── post_mr_comment.sh
+│   └── generate_qr_code.py
+├── tests/                                  # test directory for the plugin
+│   ├── conftest.py
+│   ├── __init__.py
+│   └── test_plugin.py                      # test cases file, using pytest-qfield
+├── .gitignore
+├── .gitlab-ci.yml                          # GitLab CI configuration file - only if GitLab was the selected CI platform
+├── .pre-commit-config.yaml                 # pre-commit hooks configuration file
+├── LICENSE
+├── pyproject.toml                          # the Python project configuration file
+└── README.md
+```
+
 ## QField plugin
 
 You get a generated QField plugin made of [QML code](https://doc.qt.io/qt-6/qtqml-index.html), which contains a bit of logic and some UI components for your plugin. It is located in the main generated directory.
@@ -32,7 +75,7 @@ You get a generated QField plugin made of [QML code](https://doc.qt.io/qt-6/qtqm
 
 ![Famous places dialog of the generated QField plugin](images/qfield-plugin-famous-places-dialog.webp)
 
-- The second button opens a dialog, which is a QML component defined in the `MultimediaDialog.qml` file. This dialog allows to interact with the QField "multimedia" capabitilities, e.g. play sounds, vibrate, etc.
+- The second button opens a dialog, which is a QML component defined in the `MultimediaDialog.qml` file. This dialog allows to interact with the QField "multimedia" capabilities, e.g. play sounds, vibrate, etc.
 
 !!! tip
     Browse [the QField API docs](https://api.qfield.org/) to enhance it.
