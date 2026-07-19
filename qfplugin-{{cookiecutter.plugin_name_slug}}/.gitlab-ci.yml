@@ -34,13 +34,17 @@ pre:mr-zip-and-qr:
         - .gitlab-ci.yml
         - scripts/**/*
   before_script:
-    - apt update && apt install -y zip curl jq
+    - apt update && apt install -y zip curl jq qt6-base-dev qt6-tools-dev-tools
     - pip install qrcode[pil] --quiet
   script:
+    # Set variables for the ZIP artifact and QR code
     - ZIP_NAME="{{ cookiecutter.plugin_name_slug }}-mr-${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}.zip"
     - ARTIFACT_BASE_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}/artifacts/raw"
     - ZIP_URL="${ARTIFACT_BASE_URL}/${ZIP_NAME}"
     - QR_URL="${ARTIFACT_BASE_URL}/qrcode.png"
+
+    # Compile translations
+    - /usr/lib/qt6/bin/lrelease "${PLUGIN_DIR}"/*.ts
 
     # Zip the QField plugin
     - cd "${PLUGIN_DIR}" && zip -r "../${ZIP_NAME}" ./* && cd ..
