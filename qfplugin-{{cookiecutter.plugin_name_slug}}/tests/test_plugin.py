@@ -1,6 +1,5 @@
 from pytest_qfield.qfieldbot import QFieldBot
 from pytest_qfield.stub_interface.qfield_stubs import QFieldAppInterfaceStub
-
 from tests import PLUGIN_QML_PATH
 
 
