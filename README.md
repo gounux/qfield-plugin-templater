@@ -4,6 +4,7 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](LICENSE)
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/gounux/qfield-plugin-templater/main.svg)](https://results.pre-commit.ci/latest/github/gounux/qfield-plugin-templater/main)
 
 **A templater that generates a QField plugin with fancy tooling.**
 

@@ -43,7 +43,9 @@ Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/templa
 
 [![QGIS plugin templater logo](https://oslandia.gitlab.io/qgis/template-qgis-plugin/_static/cookiecutter_qgis_logo_128x128.png){ width="80" }](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)
 
-Featuring icons from [the Lucide icon set](https://lucide.dev/), and sounds from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
+Featuring icons from [the Lucide icon set](https://lucide.dev/), sounds from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
+
+See [_Geotribu_'s QField plugin for `QChat`](https://github.com/geotribu/qchat-qfield-plugin), which is following similar workflows and tooling, also used as a parallel reference and as a way to experiment and make this templater project move forward.
 
 ## How to's
 
