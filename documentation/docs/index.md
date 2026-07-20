@@ -7,9 +7,9 @@ icon: lucide/smartphone-charging
 [![QField](https://img.shields.io/badge/QField-plugin-green?logo=qgis)](https://qfield.org/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-green.svg)](https://github.com/gounux/qfield-plugin-templater/blob/main/LICENSE)
 
-**A templater that generates a QField plugin with fancy tooling.**
-
 ![QField plugin templater logo](./images/qf-plugin-templater-logo.png){ width="192" }
+
+**A templater that generates a QField plugin with fancy tooling.**
 
 ## Quick start
 
