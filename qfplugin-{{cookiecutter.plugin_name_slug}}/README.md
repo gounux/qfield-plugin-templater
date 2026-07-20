@@ -136,3 +136,17 @@ lrelease {{ cookiecutter.plugin_name_slug }}/translations.pro
 
 > [!note]
 > If you have both Qt5 and Qt6 tools installed, make sure you use the Qt6 ones, e.g. by using `/usr/lib/qt6/bin/lrelease` on Linux.
+
+## Bump a new release
+
+1. Make sure the `version` key is updated in [the plugin's metadata file](./{{ cookiecutter.plugin_name_slug }}/metadata.txt).
+
+1. Make sure the `pyproject.toml` version is updated, e.g. with `uv version --bump minor`.
+
+1. Create a new tag on the `main` branch, e.g. `git tag 0.2`, then push it via `git push origin 0.2`.
+{% if cookiecutter.ci_platform == "GitHub" %}
+The `release` CICD workflow will then automatically create the GitHub release.
+
+> [!note]
+> It is recommended to regularly prune the tags locally with `git fetch --prune --prune-tags`, since PR workflows might create some temporary ones.
+{% endif %}
