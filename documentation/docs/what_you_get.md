@@ -39,6 +39,7 @@ Here is the structure of the generated plugin template directory:
 │   │   ├── autolabeler.yml
 │   │   ├── lint.yml
 │   │   ├── pr_qrcode.yml
+│   │   ├── release.yml
 │   │   └── tests.yml
 │   ├── dependabot.yml                      # dependabot configuration file
 │   └── labeler.yml                         # labeler configuration file
@@ -95,7 +96,7 @@ Here are the CICD jobs that are configured to run different elements around the 
 - **linting**: this job will ensure that the code is respecting the setup `pre-commit` hooks.
 - **tests**: this job will run the tests for the plugin.
 - **qr codes**: this job will generate temporary QR codes for the plugin, which can be used to install a specific version of the plugin in the QField plugin manager, to test this version on a mobile device.
-- **release**: this job will handle the release process for the plugin.
+- **release**: this job will handle the release process for the plugin - currently only available for GitHub Actions.
 
 ### GitHub Actions
 
