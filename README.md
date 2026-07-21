@@ -58,34 +58,14 @@ Inspired by the [_QGIS plugin templater_](https://oslandia.gitlab.io/qgis/templa
 
 Featuring icons from [the Lucide icon set](https://lucide.dev/), and sounds from [pixabay](https://pixabay.com/sound-effects/) - see [terms of license](https://pixabay.com/service/license-summary/).
 
-## Local setup
+## Contributing
 
-### Tooling
+See [Contribution guidelines](documentation/docs/contributing.md) for details on how to contribute to this project.
 
-- install the pre-commit hooks:
+TL;DR:
 
-```sh
-pre-commit install
-```
-
-### Documentation
-
-[`uv`](https://docs.astral.sh/uv/getting-started/installation/#pypi) is needed to build and serve the doc static site locally.
-
-- once installed, sync the dependencies:
-
-```sh
-uv sync
-```
-
-- serve the documentation:
-
-```sh
-uv run zensical serve -f documentation/zensical.toml
-```
-
-- resize and convert images to `webp`, for minimal storage usage:
-
-```sh
-./scripts/resize-image.sh documentation/docs/images/the_image.png 800
-```
+- See [the Contributor Covenant Code of Conduct v2](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
+- After cloning the repository, install the pre-commit hooks via `pre-commit install`.
+- Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) then dependencies via `uv sync`.
+- Serve the doc locally via `uv run zensical serve -f documentation/zensical.toml`.
+- Resize the documentation images to `webp` format via `./scripts/resize-image.sh documentation/docs/images/the_image.png 800`.
