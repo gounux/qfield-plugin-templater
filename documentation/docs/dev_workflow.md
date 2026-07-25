@@ -27,7 +27,7 @@ chmod +x qfield-X.Y.Z-linux-x64.AppImage
 
 ```sh
 ln -s /path/to/the/generated/directory/qfplugin-my-topologizer/my-topologizer \
-    "~/Documents/QField Documents/QField/plugins"
+    "/home/user/Documents/QField Documents/QField/plugins"
 ```
 
 !!! note
