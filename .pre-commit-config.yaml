@@ -58,9 +58,11 @@ repos:
 
 # Specific configuration for https://pre-commit.ci
 ci:
-  autofix_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autofix_commit_msg: "pre-commit.ci: auto update with git hooks"
   autofix_prs: true
-  autoupdate_commit_msg: "[pre-commit.ci] Automatic updates applied by git hooks."
+  autoupdate_commit_msg: "pre-commit.ci: auto update with git hooks"
   autoupdate_schedule: weekly
-  skip: [ qmlformat ]
+  skip: [
+    qmlformat
+  ]
   submodules: false
