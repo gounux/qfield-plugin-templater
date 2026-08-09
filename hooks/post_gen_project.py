@@ -2,25 +2,27 @@ import logging
 import os
 import shutil
 
+logger = logging.getLogger(__name__)
+
 
 def clean_license_file():
     """Remove license file if no license is selected."""
     os.remove("LICENSE")
-    logging.info("License file removed.")
+    logger.info("License file removed.")
 
 
 def clean_github_elements():
     """Remove GitHub specific elements from the project."""
     shutil.rmtree(".github")
     shutil.rmtree("scripts/github")
-    logging.info("GitHub configuration removed.")
+    logger.info("GitHub configuration removed.")
 
 
 def clean_gitlab_elements():
     """Remove GitLab specific elements from the project."""
     os.remove(".gitlab-ci.yml")
     shutil.rmtree("scripts/gitlab")
-    logging.info("GitLab configuration removed.")
+    logger.info("GitLab configuration removed.")
 
 
 def main():

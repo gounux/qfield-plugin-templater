@@ -38,9 +38,9 @@ repos:
         types: [file, markdown, non-executable]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.15.22"
+    rev: "v0.16.1"
     hooks:
-      - id: ruff
+      - id: ruff-check
         args:
           - --fix
           - --target-version=py312
@@ -48,13 +48,6 @@ repos:
         args:
           - --line-length=88
           - --target-version=py312
-
-  - repo: https://github.com/pycqa/isort
-    rev: 9.0.0b1
-    hooks:
-      - id: isort
-        args:
-          - --filter-files
 
 # Specific configuration for https://pre-commit.ci
 ci:

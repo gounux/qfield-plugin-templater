@@ -2,6 +2,7 @@ from collections.abc import Generator
 
 import pytest
 from pytest_qfield.qfieldbot import QFieldBot
+
 from tests import PLUGIN_QML_PATH
 
 
