@@ -1,0 +1,26 @@
+name: "⚙️ CI"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    gen:
+        name: "📝 Generate template"
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v7
+
+          - name: Set up Python
+            uses: actions/setup-python@v7
+            with:
+              python-version: "3.12"
+
+          - name: Generate template via pipx
+            run: pipx run cookiecutter --no-input --overwrite-if-exists -o ci_template .
