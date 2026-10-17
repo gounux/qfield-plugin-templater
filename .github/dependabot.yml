@@ -16,7 +16,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "github-actions"
-    directory: "qfplugin-{{cookiecutter.plugin_name_slug}}"
+    directory: "/qfplugin-{{cookiecutter.plugin_name_slug}}"
     schedule:
       interval: "monthly"
     labels:
@@ -24,7 +24,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "uv"
-    directory: "qfplugin-{{cookiecutter.plugin_name_slug}}"
+    directory: "/qfplugin-{{cookiecutter.plugin_name_slug}}"
     schedule:
       interval: "monthly"
     labels:
