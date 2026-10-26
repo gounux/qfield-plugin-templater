@@ -25,7 +25,7 @@ repos:
           - PySide6-Essentials==6.11.1
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.49.1
+    rev: v0.50.0
     hooks:
       - id: markdownlint
         args:
@@ -38,7 +38,7 @@ repos:
         types: [file, markdown, non-executable]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.17.0"
+    rev: "v0.17.2"
     hooks:
       - id: ruff-check
         args:
