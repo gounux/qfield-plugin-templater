@@ -4,14 +4,12 @@ version = "0.1"
 description = "{{ cookiecutter.plugin_description }}"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "zensical>=0.1.0",
-]
+dependencies = []
 
 [dependency-groups]
 dev = [
     "pytest>=9.2.0",
-    "pytest-qfield>=0.11.0",
+    "pytest-qfield>=0.12.0",
 ]
 
 [tool.pytest.ini_options]
